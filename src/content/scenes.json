@@ -1,0 +1,127 @@
+{
+  "scrollPxPerFrame": 12,
+  "scenes": [
+    {
+      "id": "piece-1",
+      "title": [
+        "Piece",
+        "One"
+      ],
+      "subtitle": "Placeholder subtitle for the first piece",
+      "button": "Enter the Gallery",
+      "caption": [
+        "Placeholder caption,",
+        "line two."
+      ],
+      "readouts": [
+        {
+          "value": "001",
+          "label": "Label A"
+        },
+        {
+          "value": "02",
+          "label": "Label B"
+        },
+        {
+          "value": "100 cm",
+          "label": "Label C"
+        }
+      ],
+      "label": [
+        "Free",
+        "Admission"
+      ],
+      "year": "0001",
+      "room": "hall",
+      "layers": {
+        "fg": "/scenes/piece1/fg.png",
+        "mid": "/scenes/piece1/mid.png",
+        "bg": "/scenes/piece1/bg.png",
+        "hero": "/scenes/piece1/hero.jpg"
+      }
+    },
+    {
+      "id": "piece-2",
+      "title": [
+        "Piece",
+        "Two"
+      ],
+      "subtitle": "Placeholder subtitle for the second piece",
+      "button": "Enter the Gallery",
+      "caption": [
+        "Another caption,",
+        "line two."
+      ],
+      "readouts": [
+        {
+          "value": "002",
+          "label": "Label A"
+        },
+        {
+          "value": "12",
+          "label": "Label B"
+        },
+        {
+          "value": "200 cm",
+          "label": "Label C"
+        }
+      ],
+      "label": [
+        "Free",
+        "Admission"
+      ],
+      "year": "0002",
+      "room": "dark",
+      "layers": {
+        "fg": "/scenes/piece2/fg.png",
+        "mid": "/scenes/piece2/mid.png",
+        "bg": "/scenes/piece2/bg.png",
+        "hero": "/scenes/piece2/hero.jpg"
+      }
+    },
+    {
+      "id": "piece-3",
+      "title": [
+        "Piece",
+        "Three"
+      ],
+      "subtitle": "Placeholder subtitle for the third piece",
+      "button": "Enter the Gallery",
+      "caption": [
+        "Third caption,",
+        "line two."
+      ],
+      "readouts": [
+        {
+          "value": "003",
+          "label": "Label A"
+        },
+        {
+          "value": "30",
+          "label": "Label B"
+        },
+        {
+          "value": "300 cm",
+          "label": "Label C"
+        }
+      ],
+      "label": [
+        "Free",
+        "Admission"
+      ],
+      "year": "0003",
+      "room": "hall",
+      "layers": {
+        "fg": "/scenes/piece3/fg.png",
+        "mid": "/scenes/piece3/mid.png",
+        "bg": "/scenes/piece3/bg.png",
+        "hero": "/scenes/piece3/hero.jpg"
+      }
+    }
+  ],
+  "intro": [
+    "Placeholder intro",
+    "line two of the",
+    "opening statement"
+  ]
+}

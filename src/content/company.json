@@ -1,0 +1,72 @@
+{
+  "name": "Scan Tool Line (STL)",
+  "about_en": "SCAN TOOL LINE is a leading enterprise in the field of industrial equipment, lubricants and sports fuels. It is the exclusive agent for several international companies such as Lucas Oil, VP Racing Fuels, MotorVac and other famous brands.",
+  "about_source": "https://www.stltools.com/about-us",
+  "contact": {
+    "phone": "+966 53 550 5430",
+    "email": "info@stltools.com",
+    "source": "https://www.stltools.com/contactus",
+    "phone_provenance": "VERIFIED (owner chose in chat)"
+  },
+  "contact_lucas_site": {
+    "phone": "0555777829",
+    "email": "info@lucasoil.sa",
+    "source": "https://lucasoil.sa/contact-us/",
+    "note": "not used; owner chose the STL number"
+  },
+  "maintenance_centre": {
+    "name": "Auto Lube",
+    "role": "operates the Lucas agency maintenance centres",
+    "branches": [
+      {
+        "city": "Riyadh",
+        "district": "Al Naseem (Khurais Road)",
+        "map": "https://maps.app.goo.gl/nCvrLG2nWzdxAPkd6"
+      },
+      {
+        "city": "Riyadh",
+        "district": "Al Wadi (Abu Bakr St.)",
+        "map": "https://maps.app.goo.gl/hoTMU9vvGAuuSsRj9"
+      },
+      {
+        "city": "Jeddah",
+        "district": "Al Nuzha",
+        "map": "https://maps.app.goo.gl/pMqabk5msP1AQsQw9"
+      },
+      {
+        "city": "Jeddah",
+        "district": "Al Muhammadiyah",
+        "map": "https://maps.app.goo.gl/WLw8gXYxqbArcG2A6"
+      },
+      {
+        "city": "Abha",
+        "district": "Al Mansak",
+        "map": "https://maps.app.goo.gl/7dMAWbkYmtNBt8qr9"
+      },
+      {
+        "city": "Taif",
+        "district": "Al Qaym Al A'la (Airport Rd.)",
+        "map": "https://maps.app.goo.gl/XBY4JNDN94beLYDi8"
+      },
+      {
+        "city": "Makkah",
+        "district": "Al Umrah Al Jadidah",
+        "map": "https://maps.app.goo.gl/56dtbcyd1Hvsvhez5"
+      },
+      {
+        "city": "Al Khobar",
+        "district": "Al Jawharah",
+        "map": "https://maps.app.goo.gl/WdwLs4nAn8cam8UY9",
+        "note": "owner chose to keep Al Jawharah 2026-11-23"
+      }
+    ],
+    "provenance": "VERIFIED (stated by the owner in chat)"
+  },
+  "brands": [
+    "Lucas Oil",
+    "MotorVac",
+    "VP Racing Fuels",
+    "Shield"
+  ],
+  "no_prices": true
+}
