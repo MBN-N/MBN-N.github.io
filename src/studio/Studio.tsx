@@ -560,11 +560,14 @@ function Rig({ count }: { count: number }) {
   return null
 }
 
+const MOBILE = typeof window !== 'undefined' && window.matchMedia('(max-width: 820px), (pointer: coarse)').matches
+
 function Post() {
   const blur = useRef<DirectionalBlurEffect>(null)
   useFrame(() => {
     blur.current?.set(clamp(Math.abs(live.vel) * 0.018, 0, 0.045), 0.15)
   })
+  if (MOBILE) return null // phones: skip the full-screen post passes, they cost frames
   return (
     <EffectComposer multisampling={0}>
       <DirectionalBlur ref={blur} />
@@ -579,7 +582,7 @@ function World({ stages }: { stages: Stage[] }) {
     <>
       <color attach="background" args={[BG]} />
       <fog attach="fog" args={[BG, 16, 52]} />
-      <Environment resolution={256} environmentIntensity={0.55}>
+      <Environment resolution={MOBILE ? 128 : 256} environmentIntensity={0.55}>
         <Lightformer form="rect" intensity={1.2} position={[0, 6, 4]} scale={[14, 3, 1]} />
         <Lightformer form="rect" intensity={0.8} position={[-8, 3, 0]} rotation-y={Math.PI / 2} scale={[10, 3, 1]} />
         <Lightformer form="rect" intensity={0.8} position={[8, 3, 0]} rotation-y={-Math.PI / 2} scale={[10, 3, 1]} />
@@ -588,7 +591,9 @@ function World({ stages }: { stages: Stage[] }) {
       <directionalLight position={[6, 12, 8]} intensity={1.8} />
       <mesh rotation-x={-Math.PI / 2} position={[0, 0, -40]}>
         <planeGeometry args={[120, 160]} />
-        <MeshReflectorMaterial color="#eceef3" blur={[700, 240]} resolution={768} mixBlur={1} mixStrength={9} mirror={0.6} roughness={0.5} depthScale={0.6} minDepthThreshold={0.4} maxDepthThreshold={1.2} metalness={0.05} />
+        {MOBILE
+          ? <meshBasicMaterial color="#eceef3" toneMapped={false} />
+          : <MeshReflectorMaterial color="#eceef3" blur={[700, 240]} resolution={768} mixBlur={1} mixStrength={9} mirror={0.6} roughness={0.5} depthScale={0.6} minDepthThreshold={0.4} maxDepthThreshold={1.2} metalness={0.05} />}
       </mesh>
       {stages.map((s, i) => (
         <Suspense key={s.id} fallback={null}>
@@ -715,7 +720,9 @@ function Fps() {
 }
 
 export function Studio() {
-  const [dpr, setDpr] = useState(1.5)
+  const hi = MOBILE ? Math.min(window.devicePixelRatio || 2, 2) : 1.5
+  const lo = MOBILE ? Math.min(hi, 1.5) : 1
+  const [dpr, setDpr] = useState(hi)
   const [stages, setStages] = useState<Stage[] | null>(null)
   useEffect(() => {
     const lucas = parseHash().seg[1] === 'lucas'
@@ -723,16 +730,20 @@ export function Studio() {
   }, [])
   useEffect(() => {
     const lenis = new Lenis({ lerp: 0.085 })
+    let maxScroll = 0
+    const measure = () => { maxScroll = document.documentElement.scrollHeight - innerHeight }
+    measure(); const ro = new ResizeObserver(measure); ro.observe(document.documentElement); window.addEventListener('resize', measure)
     let raf = 0
     const tick = (t: number) => {
       lenis.raf(t)
-      const max = document.documentElement.scrollHeight - innerHeight
+      const max = maxScroll
       live.target = max > 0 ? clamp(scrollY / max) : 0
       raf = requestAnimationFrame(tick)
     }
     raf = requestAnimationFrame(tick)
     return () => {
       cancelAnimationFrame(raf)
+      ro.disconnect(); window.removeEventListener('resize', measure)
       lenis.destroy()
     }
   }, [])
@@ -740,8 +751,8 @@ export function Studio() {
   return (
     <div className="st">
       <div className="st-stage">
-        <Canvas dpr={dpr} camera={{ fov: 40, near: 0.1, far: 160 }} gl={{ antialias: true, powerPreference: 'high-performance' }}>
-          <PerformanceMonitor onDecline={() => setDpr(1)} onIncline={() => setDpr(1.5)} />
+        <Canvas dpr={dpr} camera={{ fov: 40, near: 0.1, far: 160 }} gl={{ antialias: !MOBILE, powerPreference: 'high-performance' }}>
+          <PerformanceMonitor onDecline={() => setDpr(lo)} onIncline={() => setDpr(hi)} />
           <Suspense fallback={null}>
             <World stages={stages} />
           </Suspense>
